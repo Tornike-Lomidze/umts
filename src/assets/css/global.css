@@ -1,0 +1,44 @@
+
+
+/*  global variables */
+:root {
+  --bodybg: #282828;
+
+  --blue: #1677ff;
+  --gray: #efefef;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bodyBg);
+  color: var(--red);
+  margin: 0;
+}
+ 
+.header,
+.section-table {
+  width: 100vw;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.header {
+  background-color: var(--gray);
+}
+
+.personalNumber {
+  width: 200px;
+}
+.radio-btn{
+  padding: 6px;
+  transition: .4s;
+}
+.radio-btn:hover{
+  color: var(--blue);
+}
+.ant-radio.ant-radio-checked ~ span {
+  color: var(--blue)!important;
+}
