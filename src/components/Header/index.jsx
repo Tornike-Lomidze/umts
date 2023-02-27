@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-// import ClockCircleOutlined from '@ant-design/icons/ClockCircleOutlined';
-// import type { RadioChangeEvent } from 'antd';
-import { Col, Row, InputNumber, Input, Space, Radio, Button, Select, RadioChangeEvent } from 'antd';
+import { Col, Row, Form, InputNumber, Input,  Radio, Button, Select, RadioChangeEvent } from 'antd';
 import Table from './table';
 
 
 const Header = () => {
 
+  const [form] = Form.useForm();
   const [valueOne, setValueOne] = useState(1);
   const [valueTwo, setValueTwo] = useState(1);
 
@@ -26,10 +25,19 @@ const Header = () => {
     console.log('changed', value);
   };
 
+  const onFinish = (values: any) => {
+    console.log(values);
+  };
+
   return (
     <>
       <header className='header'>
-        <Row justify="space-between">
+        <Form
+          form={form}
+          name="control-hooks"
+          onFinish={onFinish}
+          className="header-form"
+        >
           <Col>
             <Col>
               <Radio.Group onChange={onChangeOne} value={valueOne} defaultValue={1}>
@@ -47,28 +55,49 @@ const Header = () => {
           </Col>
 
           <Col>
-            <Space direction="horizontal" style={{ width: '100%' }}>
-                <InputNumber type="number" className="personalNumber" placeholder="პირადი ნომერი" min={1} onChange={onChangPersonalNumber}  />
-                <Input placeholder="სახელი" />
-                <Input placeholder="გვარი" />
-                <Button type="primary">ძებნა</Button>
-                <Select
-                  defaultValue="2022-11-08 15:09:48"
-                  style={{ width: 170 }}
-                  onChange={handleChange}
-                  options={[
-                    { value: '2022-11-08 15:09:48', label: '2022-11-08 15:09:48' },
-                    { value: '2022-08-08 18:03:25', label: '2022-08-08 18:03:25' },
-                    { value: '2022-06-08 17:55:24', label: '2022-06-08 17:55:24' },
-                    { value: '2022-01-08 11:29:37', label: '2022-01-08 11:29:37', disabled: true },
-                  ]}
-                />
-            </Space>
-          </Col> 
+            <Row>
+                <Form.Item name="personalNumber">
+                  <InputNumber type="number" size="large" className="inp inp-num" placeholder="პირადი ნომერი" min={1} onChange={onChangPersonalNumber}  />
+                </Form.Item>
+                <Form.Item name="name">
+                  <Input placeholder="სახელი" size="large" className="inp inp-text"   />
+                </Form.Item>
+                <Form.Item name="surname">
+                  <Input placeholder="გვარი" size="large" className="inp inp-text"  />
+                </Form.Item>
+                <Form.Item name="surname">
+                  <Button htmlType="submit" size="large" className="btn-form">ძებნა</Button>
+                </Form.Item>
+                <Form.Item name="selectDateTime">
+                  <Select
+                    defaultValue=""
+                    style={{ width: 200 }}
+                    onChange={handleChange}
+                    options={[
+                      { value: '2022-11-08 15:09:48', label: '2022-11-08 15:09:48' },
+                      { value: '2022-08-08 18:03:25', label: '2022-08-08 18:03:25' },
+                      { value: '2022-06-08 17:55:24', label: '2022-06-08 17:55:24' },
+                      { value: '2022-01-08 11:29:37', label: '2022-01-08 11:29:37', disabled: true },
+                    ]}
+                    size="large"
+                    className="select-form"
+                  />
+                </Form.Item>
+            </Row>
+          </Col>
+        </Form> 
+        <Row justify="space-between" align="center">
+          <Col>
+            <span className='header-sms error'>CEI/სისტემის ადმინისტრატორი</span>
+          </Col>
+          <Col>
+            <span className='header-sms'>CEI/სისტემის ადმინისტრატორი</span>
+          </Col>
         </Row>
-        
       </header>
-      <Table />
+    
+    
+      <Table className='umts-section' />
     </>
   )
 }

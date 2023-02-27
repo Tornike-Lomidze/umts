@@ -2,10 +2,35 @@
 
 /*  global variables */
 :root {
-  --bodybg: #282828;
+  --error: red;
+  --success: #379683;
+  --warning: yellow;
 
-  --blue: #1677ff;
+  --bodybg: #282828;
+  --black: #000000;
+  --black-75: rgba(0, 0, 0, 0.75); 
+  --norm-black: #4C4C4C;
+  --light-gray: #EFEFEF;
+  --dark-gray: #a9a9a9;
   --gray: #efefef;
+  --light-yellow: #edf5e1;
+  --white: #ffffff;
+  --sky: #99ccf4;
+  --blue: #05386b;
+  --red: #ff3333;
+  --light-green: #8ee4af;
+  --green: #5cdb95;
+  --dark-green: #379683;
+  --dark-green-hover: #307E6F;
+  --current-table-odd-green: #C1F1C1;
+  --current-table-even-green: #B6E1B6;
+  --problem-table-odd-green: #EEB7B7;
+  --problem-table-even-green: #E0ADAD;
+  --closed-table-odd-green: #B4D2E9;
+  --closed-table-even-green: #A7C1D5;
+  --cencel-yellow: #FFC300;
+  --cencel-yellow-hover: #EEB600;
+  --section-p: 2rem;
 }
 
 * {
@@ -14,23 +39,49 @@
 }
 
 body {
-  background-color: var(--bodyBg);
+  background: var(--light-gray);
   color: var(--red);
   margin: 0;
 }
  
 .header,
+.umts-section,
 .section-table {
-  width: 100vw;
-  padding: 2rem;
+  padding: var(--section-p);
   box-sizing: border-box;
 }
 .header {
   background-color: var(--gray);
+  box-shadow: 0px 0px 5px 1px var(--dark-gray);
+}
+.header-form {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
-.personalNumber {
+.header-form .inp{
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: var(--black);
+}
+.header-form .inp.inp-num{
   width: 200px;
+}
+.header-form .inp.inp-text{
+  width: 150px;
+}
+.btn-form {
+  width: 120px;
+  color: var(--white)!important;
+  background-color: var(--dark-green);
+}
+.btn-form:hover {
+  background-color: var(--dark-green-hover);
+}
+.select-form {
+  width: 230px;
 }
 .radio-btn{
   padding: 6px;
@@ -41,4 +92,39 @@ body {
 }
 .ant-radio.ant-radio-checked ~ span {
   color: var(--blue)!important;
+}
+
+.header-sms {
+  font-size: 16px;
+  color: #282828;
+  padding-top: 1rem;
+  display: inline-block;
+}
+.header-sms.error {
+  color: var(--error);
+}
+
+.sec-card-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sec-card-grid .card-style {
+  width: calc(25% - 11px);
+  white-space: pre-line;
+}
+.sec-card-grid .card-style .ant-card-head-title {
+  white-space: pre-line;
+  line-height: 1.3;
+}
+.sec-card-grid .card-style .ant-card-body{
+  height: 115px;
+  position: relative;
+}
+.sec-card-grid .card-style .ant-card-body > div{
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
