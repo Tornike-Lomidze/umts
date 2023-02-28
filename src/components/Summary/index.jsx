@@ -1,5 +1,4 @@
 import React from 'react';
-import { Space } from 'antd';
 import Card from '../../elements/Card';
 import CardBorrower from '../../elements/CardBorrower';
 

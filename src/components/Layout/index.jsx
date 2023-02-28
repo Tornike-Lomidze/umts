@@ -5,7 +5,7 @@ import Transfer from '../Transfer'
 import TransferHistory from '../TransferHistory'
 function Layout() {
   return (
-    <div>
+    <div className="layout_style">
       <Header />
       <Summary />
       <Transfer />

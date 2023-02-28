@@ -1,31 +1,30 @@
 import React, { useState } from 'react';
-import { Col, Row, Form, InputNumber, Input,  Radio, Button, Select, RadioChangeEvent } from 'antd';
+import { Col, Row, Form, InputNumber, Input,  Radio, Button, Select } from 'antd';
 import Table from './table';
-
 
 const Header = () => {
 
   const [form] = Form.useForm();
-  const [valueOne, setValueOne] = useState(1);
-  const [valueTwo, setValueTwo] = useState(1);
+  const [valueOne, setValueOne] = useState("physicalPerson");
+  const [valueTwo, setValueTwo] = useState("internalSource");
 
     
-  const onChangeOne = (e: RadioChangeEvent) => {
-      console.log('onChangeOne ', e.target.valueOne);
-      setValueOne(e.target.valueOne);
+  const onChangeOne = (value) => {
+      console.log('onChangeOne ', value);
+      setValueOne(value.target.value);
   };
-  const onChangeTwo = (e: RadioChangeEvent) => {
-    console.log('onChangeTwo ', e.target.valueTwo);
-    setValueTwo(e.target.valueTwo);
+  const onChangeTwo = (value) => {
+    console.log('onChangeTwo ', value);
+    setValueTwo(value.target.value);
 };
-  const handleChange = (value: string) => {
+  const onChangeDateTime = (value) => {
     console.log(`selected ${value}`);
   };
-  const onChangPersonalNumber = (value: number) => {
+  const onChangePersonalNumber = (value) => {
     console.log('changed', value);
   };
 
-  const onFinish = (values: any) => {
+  const onFinish = (values) => {
     console.log(values);
   };
 
@@ -40,24 +39,28 @@ const Header = () => {
         >
           <Col>
             <Col>
-              <Radio.Group onChange={onChangeOne} value={valueOne} defaultValue={1}>
-                  <Radio value={1} className="radio-btn">ფიზიკური პირი</Radio>
-                  <Radio value={2} className="radio-btn">იურიდიული პირი</Radio>
-                  <Radio value={3} className="radio-btn">არარეზიდენტი</Radio>
-              </Radio.Group>
+              <Form.Item name="userPersonStatus">
+                <Radio.Group onChange={onChangeOne} value={valueOne} defaultValue="physicalPerson">
+                    <Radio value="physicalPerson" className="radio-btn">ფიზიკური პირი</Radio>
+                    <Radio value="LegalEntity" className="radio-btn">იურიდიული პირი</Radio>
+                    <Radio value="Non-resident" className="radio-btn">არარეზიდენტი</Radio>
+                </Radio.Group>
+              </Form.Item>
             </Col>
             <Col>
-              <Radio.Group onChange={onChangeTwo} value={valueTwo} defaultValue={4}>
-                  <Radio value={4} className="radio-btn">შიდა წყარო</Radio>
-                  <Radio value={5} className="radio-btn">გარე წყარო</Radio>
-              </Radio.Group>
+              <Form.Item name="userSource">
+                <Radio.Group onChange={onChangeTwo} value={valueTwo} defaultValue="internalSource">
+                    <Radio value="internalSource" className="radio-btn">შიდა წყარო</Radio>
+                    <Radio value="externalSource" className="radio-btn">გარე წყარო</Radio>
+                </Radio.Group>
+              </Form.Item>
             </Col>
           </Col>
 
           <Col>
             <Row>
                 <Form.Item name="personalNumber">
-                  <InputNumber type="number" size="large" className="inp inp-num" placeholder="პირადი ნომერი" min={1} onChange={onChangPersonalNumber}  />
+                  <InputNumber type="number" size="large" className="inp inp-num" placeholder="პირადი ნომერი" min={1} onChange={onChangePersonalNumber}  />
                 </Form.Item>
                 <Form.Item name="name">
                   <Input placeholder="სახელი" size="large" className="inp inp-text"   />
@@ -72,7 +75,7 @@ const Header = () => {
                   <Select
                     defaultValue=""
                     style={{ width: 200 }}
-                    onChange={handleChange}
+                    onChange={onChangeDateTime}
                     options={[
                       { value: '2022-11-08 15:09:48', label: '2022-11-08 15:09:48' },
                       { value: '2022-08-08 18:03:25', label: '2022-08-08 18:03:25' },

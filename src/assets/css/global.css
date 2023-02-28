@@ -40,10 +40,11 @@
 
 body {
   background: var(--light-gray);
-  color: var(--red);
   margin: 0;
 }
- 
+.layout_style{
+  padding-bottom: 3rem;
+}
 .header,
 .umts-section,
 .section-table {
@@ -59,6 +60,9 @@ body {
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
+}
+.header-form .ant-form-item {
+  margin-bottom: 0;
 }
 
 .header-form .inp{
@@ -127,4 +131,10 @@ body {
   display: flex;
   align-items: center;
   height: 100%;
+}
+
+.transfer-title {
+  width: 100%;
+  text-align: center;
+  margin: 1rem;
 }

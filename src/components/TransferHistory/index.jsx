@@ -92,10 +92,13 @@ interface DataType {
   ];
   
 
-  const TransferHistory: React.FC = () => (
-    <section className="section-table"> 
-     <Table columns={columns} dataSource={data} size="middle" pagination={false} />
-    </section>
-  );
+  const TransferHistory = () => {
+    return(
+      <section className="section-table"> 
+        <h3 className="transfer-title">ფულადი გზავნილების ისტორია</h3>
+        <Table columns={columns} dataSource={data} size="middle" pagination={false} />
+      </section>
+    )
+  };
   
   export default TransferHistory;
