@@ -71,7 +71,7 @@ body {
   color: var(--black);
 }
 .header-form .inp.inp-num{
-  width: 200px;
+  width: 160px;
 }
 .header-form .inp.inp-text{
   width: 150px;

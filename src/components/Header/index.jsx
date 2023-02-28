@@ -68,9 +68,6 @@ const Header = () => {
                 <Form.Item name="surname">
                   <Input placeholder="გვარი" size="large" className="inp inp-text"  />
                 </Form.Item>
-                <Form.Item name="surname">
-                  <Button htmlType="submit" size="large" className="btn-form">ძებნა</Button>
-                </Form.Item>
                 <Form.Item name="selectDateTime">
                   <Select
                     defaultValue=""
@@ -85,6 +82,9 @@ const Header = () => {
                     size="large"
                     className="select-form"
                   />
+                </Form.Item>
+                <Form.Item name="surname">
+                  <Button htmlType="submit" size="large" className="btn-form">ძებნა</Button>
                 </Form.Item>
             </Row>
           </Col>
